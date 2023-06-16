@@ -1,4 +1,4 @@
- /******************************************************************************
+/******************************************************************************
  *
  * Layer: Application Layer
  *
@@ -45,11 +45,13 @@ uint32 calc(uint32 v1 , uint32 v2 , uint32 c)
 	return Res;
 }
 
-/* This Code is Written for solve Simple Calculation between 2 numbers only*/
+/* This Code is Written for solving Simple Calculation between 2 numbers only*/
 
 int main(void)
 {
-	uint8 key = 0 , op = '+' , flag = 0 ; /* Using Flag To Control Which Var should be stored in*/ 
+	/* Using Flag To Control Which Var should be stored in*/
+	uint8 key = 0 , op = '+' , flag = 0 ;
+
 	uint32 var1 = 0 , var2 = 0 ;
 
 	LCD_init() ; /* Initialization LCD */
@@ -58,22 +60,22 @@ int main(void)
 	{
 		key = KEYPAD_getPressedKey();
 
-		if(key == '=') // Equal and Calculate The Result
+		if(key == '=') /* Equal and Calculate The Result */
 		{
-			LCD_moveCursor(1,10); // move the crusor to Row 1 and column 10
-			LCD_intgerToString(calc(var1,var2,op));
-			flag = 0 ;
-			var1 = 0 ;
+			LCD_moveCursor(1,10); /* move the cursor to Row 1 and column 10 */
+			var1 = calc(var1,var2,op);
+			LCD_intgerToString(var1);
+			flag = 2 ;
 			var2 = 0 ;
 		}
-		else if(key == 13) // on/off Button to (Clear The LCD)
+		else if(key == 13) /* on/off Button to (Clear The LCD) */
 		{
 			LCD_clearScreen(); // Clear Screen
 			var1 = 0 ;
 			flag = 0 ;
 			var2 = 0 ;
 		}
-		else if((key >= 0) && (key <= 9)) // Store The 2 Numbers 
+		else if((key >= 0) && (key <= 9)) /* Store The 2 Numbers */
 		{
 			if(flag == 0)
 			{
@@ -88,9 +90,19 @@ int main(void)
 		}
 		else /* Enter here if The operator's Button was pressed */
 		{
+			/* Enter here if the user wants to perform a calculation
+			 * on the previous output */
+			if(flag == 2)
+			{
+				LCD_clearScreen(); // Clear Screen
+				LCD_sendCommand(LCD_GO_TO_HOME);
+				LCD_displayString("Ans");
+			}
+
 			op = key ;
 			LCD_displayCharacter(key);
 			flag = 1 ;
+
 		}
 
 		_delay_ms(500);
