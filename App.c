@@ -20,9 +20,9 @@
  * Add / Sub / Divide / MUL
  */
 
-uint32 calc(uint32 v1 , uint32 v2 , uint32 c)
+sint32 calc(sint32 v1 , sint32 v2 , uint8 c)
 {
-	uint32 Res = 0 ;
+	sint32 Res = 0 ;
 
 	switch(c)
 	{
@@ -52,7 +52,7 @@ int main(void)
 	/* Using Flag To Control Which Var should be stored in*/
 	uint8 key = 0 , op = '+' , flag = 0 ;
 
-	uint32 var1 = 0 , var2 = 0 ;
+	sint32 var1 = 0 , var2 = 0 ;
 
 	LCD_init() ; /* Initialization LCD */
 
