@@ -95,7 +95,6 @@ int main(void)
 			if(flag == 2)
 			{
 				LCD_clearScreen(); // Clear Screen
-				LCD_sendCommand(LCD_GO_TO_HOME);
 				LCD_displayString("Ans");
 			}
 
