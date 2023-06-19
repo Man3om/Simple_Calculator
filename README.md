@@ -2,7 +2,7 @@
 This Project is Written for solving Simple Calculation between 2 numbers only
 
 ### Components:
-- Atmega 32
+- ATmega 32
 - Keypad (4x4)
 - LCD (16x2)
 
