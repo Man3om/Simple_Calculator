@@ -94,6 +94,9 @@ int main(void)
 			 * on the previous output */
 			if(flag == 2)
 			{
+				/* Enter here if the user wants to perform a calculation
+				 * on the previous output */
+
 				LCD_clearScreen(); // Clear Screen
 				LCD_displayString("Ans");
 			}
